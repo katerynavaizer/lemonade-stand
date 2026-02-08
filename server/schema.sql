@@ -24,4 +24,6 @@ INSERT INTO beverages (name, price, description) VALUES
 ('Iced Tea', 4.00, 'Hand-brewed black tea with a hint of lemon'),
 ('Matcha refresher', 6.00, 'Ceremonial grade matcha whisked with cold honey and lime'),
 ('Sparkling water', 3.00, 'Crisp carbonated spring water with a fresh lemon twist'),
-('Iced coffee', 3.50, 'Slow-steeped cold brew served over ice with optional cream');
+('Iced coffee', 3.50, 'Slow-steeped cold brew served over ice with optional cream'),
+('Lavender Lemonade', 7.50, 'Classic lemonade infused with organic dried lavender and a hint of honey'),
+('Minty Watermelon', 6.00, 'Fresh watermelon juice mixed with tart lemon and muddled garden mint');

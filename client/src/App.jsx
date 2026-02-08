@@ -6,7 +6,6 @@ import Cart from "./components/Cart/Cart.jsx";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm.jsx";
 
 const App = () => {
-  // --- STATE ---
   const [beverages, setBeverages] = useState([]);
   const [cart, setCart] = useState([]);
   const [name, setName] = useState("");
@@ -65,7 +64,6 @@ const App = () => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  console.log("state changed! totalPrice= " + totalPrice);
 
   const submitOrder = async () => {
     if (cart.length === 0) return alert("Please select a drink first!");
@@ -124,7 +122,7 @@ const App = () => {
               <strong>Email:</strong> {lastOrder.customerEmail}
             </p>
             <p>
-              <strong>Total:</strong> ${lastOrder.total.toFixed(2)}
+              <strong>Total:</strong> ${Number(lastOrder.total).toFixed(2)}
             </p>
             <ul>
               {lastOrder.items.map((item) => (
@@ -139,30 +137,35 @@ const App = () => {
           </button>
         </div>
       ) : (
-        <>
-          <BeverageList beverages={beverages} addToCart={addToCart} />
-
-          <Cart
-            cart={cart}
-            removeFromCart={removeFromCart}
-            addToCart={addToCart}
-            totalPrice={totalPrice}
-          />
-
-          {cart.length > 0 && (
-            <CheckoutForm
-              name={name}
-              setName={setName}
-              email={email}
-              setEmail={setEmail}
-              submitOrder={submitOrder}
+        <div className="layout-grid">
+          {" "}
+          {/* Updated structure starts here */}
+          <div className="menu-column">
+            <BeverageList beverages={beverages} addToCart={addToCart} />
+          </div>
+          <div className="sidebar-column">
+            <Cart
+              cart={cart}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              totalPrice={totalPrice}
             />
-          )}
 
-          {orderStatus && !isSuccess && (
-            <div className="error-message">{orderStatus}</div>
-          )}
-        </>
+            {cart.length > 0 && (
+              <CheckoutForm
+                name={name}
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
+                submitOrder={submitOrder}
+              />
+            )}
+          </div>
+        </div>
+      )}
+
+      {orderStatus && !isSuccess && (
+        <div className="error-message">{orderStatus}</div>
       )}
     </div>
   );

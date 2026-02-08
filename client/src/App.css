@@ -21,7 +21,7 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 8rem;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ body {
 .app-container {
   background-color: #fdfcf0;
   width: 100%;
-  max-width: 800px;
+  max-width: 1100px;
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -104,4 +104,31 @@ body {
   font-size: 1.1rem;
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
+}
+
+.layout-grid {
+  display: flex;
+  gap: 30px;
+  text-align: left; /* Aligns text left for the columns */
+  align-items: flex-start;
+}
+
+.menu-column {
+  flex: 3;
+}
+
+.sidebar-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+  padding-top: 75px;
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    flex-direction: column;
+  }
 }
