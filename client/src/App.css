@@ -7,6 +7,16 @@ body {
   display: flex;
   place-items: center;
   justify-content: center;
+  /* 2. Image with Overlay */
+  background-image:
+    linear-gradient(rgba(253, 252, 240, 0.15), rgba(253, 252, 240, 0.15)),
+    url("./assets/lemons.jpg");
+
+  /* 3. Positioning */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #root {
