@@ -9,7 +9,7 @@ const BeverageList = ({ beverages, addToCart }) => {
         {beverages.map((drink) => (
           <div key={drink.id} className="beverage-card">
             <h3>{drink.name}</h3>
-            <p className="price">${drink.price.toFixed(2)}</p>
+            <p className="price">${Number(drink.price).toFixed(2)}</p>
             <button onClick={() => addToCart(drink)}>Add to Order</button>
           </div>
         ))}

@@ -7,12 +7,10 @@ body {
   display: flex;
   place-items: center;
   justify-content: center;
-  /* 2. Image with Overlay */
   background-image:
     linear-gradient(rgba(253, 252, 240, 0.15), rgba(253, 252, 240, 0.15)),
     url("./assets/lemons.jpg");
 
-  /* 3. Positioning */
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -84,28 +82,26 @@ body {
 }
 
 .receipt-card {
-  text-align: left; /* 1. Aligns text to the left */
-  max-width: 400px; /* Keeps it neat and narrow */
-  margin: 0 auto; /* Centers the card itself in the middle of the screen */
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
   margin-bottom: 30px;
 
-  /* Optional: Makes it look like a paper receipt */
   background: white;
   padding: 20px;
   border-radius: 8px;
   border: 1px dashed #ccc;
 }
 
-/* Receipt List */
 .receipt-card ul {
-  list-style: none; /* 2. Removes the bullet points/dots */
-  padding: 0; /* Removes default indentation */
+  list-style: none;
+  padding: 0;
   margin-top: 10px;
 }
 
 .receipt-card li {
   margin-bottom: 5px;
   font-size: 1.1rem;
-  border-bottom: 1px solid #eee; /* Adds faint lines between items */
+  border-bottom: 1px solid #eee;
   padding-bottom: 5px;
 }

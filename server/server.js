@@ -1,5 +1,16 @@
 import express from "express";
 import cors from "cors";
+import pkg from "pg";
+
+const { Pool } = pkg;
+
+const pool = new Pool({
+  user: "postgres", // Use your Mac username or 'postgres'
+  host: "localhost",
+  database: "lemonade_db",
+  password: "",
+  port: 5432,
+});
 
 const app = express();
 const PORT = 8080;
@@ -18,8 +29,16 @@ const beverages = [
 
 const orders = [];
 
-app.get("/beverages", (req, res) => {
-  res.json(beverages);
+app.get("/beverages", async (req, res) => {
+  // res.json(beverages);
+  try {
+    const result = await pool.query("SELECT * FROM beverages ORDER BY id ASC");
+    console.log("my result: " + result.rows);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
 });
 
 app.get("/orders", (req, res) => {

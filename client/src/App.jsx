@@ -15,7 +15,6 @@ const App = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [lastOrder, setLastOrder] = useState(null);
 
-  // --- FETCH DATA (Modern Async Pattern) ---
   useEffect(() => {
     const fetchBeverages = async () => {
       try {
@@ -88,7 +87,7 @@ const App = () => {
       );
 
       // Success Handling
-      // setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
+      setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
       setLastOrder(response.data.order);
       setIsSuccess(true); // Switch to success view
       setCart([]); // Clear cart

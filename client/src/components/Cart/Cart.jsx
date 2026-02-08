@@ -13,7 +13,7 @@ const Cart = ({ cart, removeFromCart, addToCart, totalPrice }) => {
             <div className="item-details">
               <span className="item-name">{item.name}</span>
               <span className="item-price">
-                ${(item.price * item.quantity).toFixed(2)}
+                ${(Number(item.price) * item.quantity).toFixed(2)}
               </span>
             </div>
 
