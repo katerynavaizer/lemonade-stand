@@ -29,8 +29,7 @@ body {
   justify-content: center;
 }
 
-.app-container {
-  background-color: white;
+.app-container {  background-color: #fdfcf0;
   width: 100%;
   max-width: 800px;
   padding: 40px;

@@ -73,7 +73,9 @@ const App = () => {
   const submitOrder = async () => {
     // Basic Validation
     if (cart.length === 0) return alert("Please select a drink first!");
-    if (!name || !email) return alert("Please enter your name and email.");
+    if (!name && !email) return alert("Please enter your name and email.");
+    else if (!name) return alert("Please enter your name.");
+    else if (!email) return alert("Please enter your email.");
 
     const orderData = {
       customerName: name,
