@@ -29,7 +29,8 @@ body {
   justify-content: center;
 }
 
-.app-container {  background-color: #fdfcf0;
+.app-container {
+  background-color: #fdfcf0;
   width: 100%;
   max-width: 800px;
   padding: 40px;
@@ -80,4 +81,31 @@ body {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 40px;
+}
+
+.receipt-card {
+  text-align: left; /* 1. Aligns text to the left */
+  max-width: 400px; /* Keeps it neat and narrow */
+  margin: 0 auto; /* Centers the card itself in the middle of the screen */
+  margin-bottom: 30px;
+
+  /* Optional: Makes it look like a paper receipt */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}
+
+/* Receipt List */
+.receipt-card ul {
+  list-style: none; /* 2. Removes the bullet points/dots */
+  padding: 0; /* Removes default indentation */
+  margin-top: 10px;
+}
+
+.receipt-card li {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee; /* Adds faint lines between items */
+  padding-bottom: 5px;
 }

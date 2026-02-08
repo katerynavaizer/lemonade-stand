@@ -12,7 +12,8 @@ const App = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false); // <--- NEW: Controls the view
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [lastOrder, setLastOrder] = useState(null);
 
   // --- FETCH DATA (Modern Async Pattern) ---
   useEffect(() => {
@@ -27,8 +28,6 @@ const App = () => {
 
     fetchBeverages();
   }, []);
-
-  // --- ACTIONS ---
 
   const addToCart = (drink) => {
     setCart((prevCart) => {
@@ -69,9 +68,7 @@ const App = () => {
   );
   console.log("state changed! totalPrice= " + totalPrice);
 
-  // --- SUBMIT ORDER (Modern Async Pattern) ---
   const submitOrder = async () => {
-    // Basic Validation
     if (cart.length === 0) return alert("Please select a drink first!");
     if (!name && !email) return alert("Please enter your name and email.");
     else if (!name) return alert("Please enter your name.");
@@ -91,7 +88,8 @@ const App = () => {
       );
 
       // Success Handling
-      setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
+      // setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
+      setLastOrder(response.data.order);
       setIsSuccess(true); // Switch to success view
       setCart([]); // Clear cart
       setName(""); // Reset form
@@ -114,9 +112,29 @@ const App = () => {
         <h1>Lemonade Stand</h1>
       </header>
 
-      {isSuccess ? (
+      {isSuccess && lastOrder ? (
         <div className="success-view">
-          <div className="success-message">{orderStatus}</div>
+          <div className="success-message">
+            Order #{lastOrder.id} confirmed!
+          </div>
+          <div className="receipt-card">
+            <p>
+              <strong>Name:</strong> {lastOrder.customerName}
+            </p>
+            <p>
+              <strong>Email:</strong> {lastOrder.customerEmail}
+            </p>
+            <p>
+              <strong>Total:</strong> ${lastOrder.total.toFixed(2)}
+            </p>
+            <ul>
+              {lastOrder.items.map((item) => (
+                <li key={item.id}>
+                  {item.name} x {item.quantity}
+                </li>
+              ))}
+            </ul>
+          </div>
           <button className="reset-btn" onClick={resetOrder}>
             Place Another Order
           </button>
@@ -142,7 +160,6 @@ const App = () => {
             />
           )}
 
-          {/* Show error message if not successful */}
           {orderStatus && !isSuccess && (
             <div className="error-message">{orderStatus}</div>
           )}

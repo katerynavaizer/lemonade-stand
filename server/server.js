@@ -17,9 +17,7 @@ const beverages = [
 ];
 
 const orders = [];
-// --- ROUTES ---
-// GET /beverages
-// This is what the Frontend will call to get the list of drinks
+
 app.get("/beverages", (req, res) => {
   res.json(beverages);
 });
@@ -28,34 +26,29 @@ app.get("/orders", (req, res) => {
   res.json(orders);
 });
 
-// POST /orders
 app.post("/orders", (req, res) => {
   const orderData = req.body;
 
-  // 3. Create a clean order object with a timestamp
   const newOrder = {
     id: Date.now(),
-    ...orderData, // Copies customerName, email, items, total
+    ...orderData,
     date: new Date().toISOString(),
   };
 
-  // 4. Save it to our array
   orders.push(newOrder);
 
   console.log("New Order Received:", newOrder);
 
   res.json({
     message: "Order received successfully!",
-    orderId: newOrder.id,
+    order: newOrder,
   });
 });
 
 app.get("/", (req, res) => {
   console.log("Accessed the home page! /");
-  res.json("test!!!");
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
