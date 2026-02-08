@@ -1,0 +1,38 @@
+.beverage-section {
+  margin-bottom: 40px;
+}
+
+.beverage-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.beverage-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+  transition: transform 0.2s;
+}
+
+.beverage-card:hover {
+  transform: translateY(-5px);
+}
+
+.beverage-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.beverage-card button:hover {
+  background-color: #0056b3;
+}

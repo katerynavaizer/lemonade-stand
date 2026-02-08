@@ -1,7 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); */
+  background-color: rgb(247, 247, 231);
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1280px; /* The constraint you wanted */
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  display: flex; /* Helps center the .app-container inside */
+  justify-content: center;
+}
+
+.app-container {
+  background-color: white;
+  width: 100%;
+  max-width: 800px; /* Keeps the card readable inside the 1280px space */
+  padding: 40px;
+  border-radius: 15px; /* Nice rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   text-align: center;
 }
 
