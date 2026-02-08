@@ -12,6 +12,7 @@ const App = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false); // <--- NEW: Controls the view
 
   // --- FETCH DATA (Modern Async Pattern) ---
   useEffect(() => {
@@ -89,13 +90,20 @@ const App = () => {
 
       // Success Handling
       setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
+      setIsSuccess(true); // Switch to success view
       setCart([]); // Clear cart
       setName(""); // Reset form
       setEmail("");
     } catch (error) {
       console.error("Error submitting order:", error);
       setOrderStatus("Failed to place order. Please try again.");
+      setIsSuccess(false);
     }
+  };
+
+  const resetOrder = () => {
+    setIsSuccess(false); // Switch back to shopping view
+    setOrderStatus(""); // Clear the success message
   };
 
   return (
@@ -104,30 +112,40 @@ const App = () => {
         <h1>Lemonade Stand</h1>
       </header>
 
-      {/* 1. Beverage List Component */}
-      <BeverageList beverages={beverages} addToCart={addToCart} />
+      {isSuccess ? (
+        <div className="success-view">
+          <div className="success-message">{orderStatus}</div>
+          <button className="reset-btn" onClick={resetOrder}>
+            Place Another Order
+          </button>
+        </div>
+      ) : (
+        <>
+          <BeverageList beverages={beverages} addToCart={addToCart} />
 
-      {/* 2. Cart Component */}
-      <Cart
-        cart={cart}
-        removeFromCart={removeFromCart}
-        addToCart={addToCart}
-        totalPrice={totalPrice}
-      />
+          <Cart
+            cart={cart}
+            removeFromCart={removeFromCart}
+            addToCart={addToCart}
+            totalPrice={totalPrice}
+          />
 
-      {/* 3. Checkout Form Component (Only show if cart has items) */}
-      {cart.length > 0 && (
-        <CheckoutForm
-          name={name}
-          setName={setName}
-          email={email}
-          setEmail={setEmail}
-          submitOrder={submitOrder}
-        />
+          {cart.length > 0 && (
+            <CheckoutForm
+              name={name}
+              setName={setName}
+              email={email}
+              setEmail={setEmail}
+              submitOrder={submitOrder}
+            />
+          )}
+
+          {/* Show error message if not successful */}
+          {orderStatus && !isSuccess && (
+            <div className="error-message">{orderStatus}</div>
+          )}
+        </>
       )}
-
-      {/* Success Message */}
-      {orderStatus && <div className="success-message">{orderStatus}</div>}
     </div>
   );
 };
