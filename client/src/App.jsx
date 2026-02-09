@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import BeverageList from "./components/BeverageList/BeverageList.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm.jsx";
+import { orderSchema } from "./schemas/order";
 
 const App = () => {
   const [beverages, setBeverages] = useState([]);
@@ -29,7 +33,6 @@ const App = () => {
 
   const addToCart = (drink) => {
     setCart((prevCart) => {
-      // 1. Check if drink is already in cart
       const existingItem = prevCart.find((item) => item.id === drink.id);
 
       if (existingItem) {
@@ -66,11 +69,7 @@ const App = () => {
   );
 
   const submitOrder = async () => {
-    if (cart.length === 0) return alert("Please select a drink first!");
-    if (!name && !email) return alert("Please enter your name and email.");
-    else if (!name) return alert("Please enter your name.");
-    else if (!email) return alert("Please enter your email.");
-
+    // 1. Prepare the data payload
     const orderData = {
       customerName: name,
       customerEmail: email,
@@ -78,22 +77,51 @@ const App = () => {
       total: totalPrice,
     };
 
+    // 2. Client-Side Validation (UX)
+    const validationResult = orderSchema.safeParse(orderData);
+
+    if (!validationResult.success) {
+      // --- TOAST ERROR IMPLEMENTATION ---
+      try {
+        // Parse the error string back into an array to get the message
+        const errorArray = JSON.parse(validationResult.error.message);
+
+        // Show the first error in a Toast (No progress bar)
+        toast.error(errorArray[0].message, {
+          hideProgressBar: true,
+          autoClose: 3000,
+        });
+      } catch (e) {
+        // Fallback
+        toast.error("Invalid input. Please check your details.", {
+          hideProgressBar: true,
+        });
+      }
+      return; // Stop here, do not send to server
+    }
+
+    // 3. Server Request (If valid)
     try {
       const response = await axios.post(
         "http://localhost:8080/orders",
         orderData,
       );
 
-      // Success Handling
       setOrderStatus(`Order #${response.data.orderId} placed successfully!`);
       setLastOrder(response.data.order);
-      setIsSuccess(true); // Switch to success view
-      setCart([]); // Clear cart
-      setName(""); // Reset form
+      setIsSuccess(true);
+      setCart([]);
+      setName("");
       setEmail("");
     } catch (error) {
       console.error("Error submitting order:", error);
-      setOrderStatus("Failed to place order. Please try again.");
+
+      // Handle Server Validation Errors (400 Bad Request)
+      if (error.response && error.response.data.message) {
+        setOrderStatus(error.response.data.message);
+      } else {
+        setOrderStatus("Failed to place order. Please try again.");
+      }
       setIsSuccess(false);
     }
   };
@@ -105,6 +133,9 @@ const App = () => {
 
   return (
     <div className="app-container">
+      {/* 2. Add Toast Container (Global settings) */}
+      <ToastContainer position="top-center" hideProgressBar={true} />
+
       <header>
         <h1>Lemonade Stand</h1>
       </header>

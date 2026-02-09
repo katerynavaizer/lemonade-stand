@@ -8,6 +8,10 @@
   flex-wrap: wrap;
 }
 
+.beverage-title {
+  margin-top: 0;
+}
+
 .beverage-card {
   border: 1px solid #ddd;
   padding: 20px;

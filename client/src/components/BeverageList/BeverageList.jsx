@@ -4,7 +4,7 @@ import "./BeverageList.css";
 const BeverageList = ({ beverages, addToCart }) => {
   return (
     <div className="beverage-section">
-      <h2>1. Choose your drinks</h2>
+      <h2 className="beverage-title">1. Choose your drinks</h2>
       <div className="beverage-grid">
         {beverages.map((drink) => (
           <div key={drink.id} className="beverage-card">
