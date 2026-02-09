@@ -4,13 +4,11 @@ body {
   background-color: #fdfcf0;
   color: #2c3e50;
   min-height: 100vh;
-  display: flex;
-  place-items: center;
-  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+
   background-image:
     linear-gradient(rgba(253, 252, 240, 0.15), rgba(253, 252, 240, 0.15)),
-    url("./assets/lemons.jpg");
-
+    url("./assets/lemons.jpg"); 
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -21,114 +19,11 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 8rem;
+  padding: 2rem;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
 }
 
-.app-container {
-  background-color: #fdfcf0;
-  width: 100%;
-  max-width: 1100px;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.app-container h1 {
-  color: #f4d03f;
-  margin-top: 0;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.card {
-  padding: 2em;
-}
-
-.reset-btn {
-  background-color: white;
-  color: rgb(206, 179, 46);
-  border: 2px solid rgb(245, 215, 60);
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
+button {
   cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #f4d03f;
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 208, 63, 0.4);
-    transform: translateY(-2px);
-  }
-}
-
-.success-message {
-  background-color: #e8f8f5;
-  color: #27ae60;
-  border: 1px solid #a9dfbf;
-  padding: 15px;
-  background-color: #d4edda;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-}
-
-.receipt-card {
-  text-align: left;
-  max-width: 400px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px dashed #ccc;
-}
-
-.receipt-card ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-.receipt-card li {
-  margin-bottom: 5px;
-  font-size: 1.1rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
-}
-
-.layout-grid {
-  display: flex;
-  gap: 30px;
-  text-align: left; /* Aligns text left for the columns */
-  align-items: flex-start;
-}
-
-.menu-column {
-  flex: 3;
-}
-
-.sidebar-column {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: sticky;
-  top: 20px;
-  /* padding-top: 75px; */
-}
-
-@media (max-width: 768px) {
-  .layout-grid {
-    flex-direction: column;
-  }
+  font-family: inherit;
 }

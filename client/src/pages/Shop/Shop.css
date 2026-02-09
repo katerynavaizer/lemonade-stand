@@ -1,0 +1,156 @@
+.shop-container {
+  background-color: #fdfcf0;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f4d03f;
+  padding-bottom: 20px;
+}
+
+.shop-header h1 {
+  color: #f4d03f;
+  margin: 0;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0px #d4b020;
+}
+
+.history-link {
+  background-color: white;
+  color: #2c3e50;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #ddd; 
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: white;
+    border-color: #f4d03f;
+    color: #f4d03f; 
+    transform: translateY(-2px);
+  }
+}
+
+.shop-layout {
+  display: flex;
+  gap: 30px;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.menu-section {
+  flex: 3;
+}
+
+.sidebar-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+.success-view {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.receipt-card {
+  text-align: left;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+  margin-bottom: 30px;
+}
+
+.receipt-card p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.receipt-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.receipt-card li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.receipt-card li span:first-child {
+  font-weight: 500;
+}
+
+.reset-btn {
+  background-color: white;
+  color: rgb(206, 179, 46);
+  border: 2px solid rgb(245, 215, 60);
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.reset-btn:hover {
+  background-color: #f4d03f;
+  color: white;
+  box-shadow: 0 4px 15px rgba(244, 208, 63, 0.4);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  margin-top: 20px;
+  color: #e74c3c;
+  background: #fadbd8;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .shop-layout {
+    flex-direction: column;
+  }
+
+  .sidebar-section {
+    position: static;
+    width: 100%;
+  }
+}
