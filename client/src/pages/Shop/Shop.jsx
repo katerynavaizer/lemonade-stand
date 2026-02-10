@@ -24,7 +24,8 @@ const Shop = () => {
   useEffect(() => {
     const fetchBeverages = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/beverages");
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+        const response = await axios.get(`${API_URL}/beverages`);
         setBeverages(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

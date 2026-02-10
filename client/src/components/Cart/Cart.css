@@ -1,9 +1,7 @@
 .cart-container {
   border-top: 2px solid #eee;
   padding-top: 20px;
-  /* margin-top: 20px; */
   margin-bottom: 30px;
-  transition: all 0.3s ease;
   &.empty {
     border: 2px dashed #ccc;
     background-color: #fafafa;
