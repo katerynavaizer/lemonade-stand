@@ -8,7 +8,7 @@ import Orders from "./pages/Orders/Orders.jsx";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ToastContainer position="top-center" hideProgressBar={true} />
 
       <Routes>
