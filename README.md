@@ -171,4 +171,4 @@ npm run dev
 
 ### Order History
 
-![Order History](./assets/history.png)
+![Order History](./assets/orders.png)
